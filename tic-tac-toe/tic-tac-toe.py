@@ -56,7 +56,9 @@ def play_game():
     print("Row 1    -         -          -   ")
     print("Row 2    -         -          -   ")
 
-    while True:
+    win = False
+
+    while not win:
         for player in players:
             if player == player1:
                 number = "one"
@@ -67,6 +69,10 @@ def play_game():
             player_move = Move(player, [row, column])
             current_board.add_move(player_move)
             current_board.display()
+            check_for_winner(current_board.moves)
         break
+
+def check_for_winner(moves):
+    pass
 
 play_game()
