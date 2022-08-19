@@ -12,16 +12,18 @@ class Move:
 
 class Board:
     def __init__(self):
-        self.moves = [["-","-","-"],["-","-","-"],["-","-","-"]]
+        self.moves = []
+        self.board = [["-","-","-"],["-","-","-"],["-","-","-"]]
 
     def display(self):
-        for line in self.moves:
+        for line in self.board:
             print(f'{line[0]} {line[1]} {line[2]}')
     
     def add_move(self, move):
         row = move.position[0]
         column = move.position[1]
-        self.moves[row][column] = move.author.game_piece
+        self.board[row][column] = move.author.game_piece
+        self.moves.append(move)
 
 class Game:
     def __init__(self, board, player1, player2):
