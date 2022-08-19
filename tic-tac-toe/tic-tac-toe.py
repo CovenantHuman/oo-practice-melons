@@ -41,6 +41,8 @@ def play_game():
     print(f"{player1.name} is {player1.game_piece}")
     print(f"{player2.name} is {player2.game_piece}")
 
+    players = [player1, player2]
+
     current_board = Board()
     
     current_game = Game(current_board, player1, player2)
@@ -53,11 +55,16 @@ def play_game():
     print("Row 2    -         -          -   ")
 
     while True:
-        row = int(input("What row does player one want to put their move in? "))
-        column = int(input("What row does player one want to put their move in? "))
-        player_one_move = Move(player1, [row, column])
-        current_board.add_move(player_one_move)
-        current_board.display()
+        for player in players:
+            if player == player1:
+                number = "one"
+            else:
+                number = "two"
+            row = int(input(f"What row does player {number} want to put their move in? "))
+            column = int(input(f"What row does player {number} want to put their move in? "))
+            player_move = Move(player, [row, column])
+            current_board.add_move(player_move)
+            current_board.display()
         break
 
 play_game()
